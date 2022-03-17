@@ -35,7 +35,7 @@ public class App {
 
     @Test
     public void test() throws ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        String problem = "53";
+        String problem = "217";
         String cName = "";
         doScanner(SCAN_PACKAGE);
         //classNames.forEach(System.out::println);
@@ -48,10 +48,16 @@ public class App {
         Class<?> clazz = Class.forName(cName);
         Object o = clazz.newInstance();
 
-        Method solute = clazz.getMethod("solute", null);
-        if (solute!=null){
-            solute.invoke(o);
-        }
+        Method[] methods = clazz.getMethods();
+        Object invoke = methods[0].invoke(o, new int[]{1, 2, 3, 4});
+        System.out.println("invoke = " + invoke);
+
+//        Method solute = clazz.gbetMethod("solute", null);
+//        if (solute!=null){
+//            solute.invoke(o);
+//        }
+
+
     }
 
 }
