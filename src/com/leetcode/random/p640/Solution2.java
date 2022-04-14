@@ -18,6 +18,7 @@ public class Solution2 {
         String pattern2 = "[0-9]";
         Pattern c = Pattern.compile(pattern2);
 
+        //TODO  正则表达式  改为 正常的for循环 效率是否会变高？
         while (matcher.find()){
             String group = matcher.group();
             if ("+".equals(group)){
