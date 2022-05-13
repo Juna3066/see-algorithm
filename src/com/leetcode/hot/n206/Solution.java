@@ -100,12 +100,26 @@ public class Solution {
         return pre;
     }
 
+    public ListNode officialReverseList2(ListNode head){
+        //结尾变头 结尾next==null
+        if (head==null || head.next == null){
+            return head;
+        }
+        //返回的一直是尾节点作为头的 主键增长的反项链
+        ListNode newHead = officialReverseList2(head.next);
+        //当前后一个的下一个指向当前  箭头反向
+        head.next.next = head;
+        //当前下一个指控 否则形成闭环
+        head.next = null;
+        return newHead;
+    }
+
 
     @Test
     public void test() {
         ListNode node = new ListNode(1, new ListNode(2,new ListNode(3)));
         //printListNode(node);
-        ListNode res = officialReverseList(node);
+        ListNode res = officialReverseList2(node);
         printListNode(res);
     }
 
