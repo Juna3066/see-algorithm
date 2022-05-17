@@ -14,12 +14,19 @@ public class Solution {
                 set.add(c);
             } else {
                 if (set.size() > maxLen) {
-                    System.out.println(start + 1);
                     maxLen = set.size();
                 }
                 set.clear();
-                start = s.substring(start).indexOf(c);
-                char[] chs = s.substring(start+1, i + 1).toCharArray();
+                //这个开始的坐标移动是一个难点
+                if (c==s.charAt(i-1)){
+                    //挨着
+                    start = i;
+                }else {
+                    //重复的不挨着
+                    start = start + s.substring(start).indexOf(c) + 1;
+                }
+
+                char[] chs = s.substring(start, i + 1).toCharArray();
                 for (char ch : chs) {
                     set.add(ch);
                 }
@@ -30,8 +37,7 @@ public class Solution {
 
     @Test
     public void test() {
-//        int len = lengthOfLongestSubstring(" ");
-        int len = lengthOfLongestSubstring("pwwkew");
+        int len = lengthOfLongestSubstring("obovodc");
         System.out.println("len = " + len);
     }
 }
