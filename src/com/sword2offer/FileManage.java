@@ -14,7 +14,8 @@ public class FileManage {
 
     // 已经会的题目
     private static List<Integer> okList = Arrays.asList(
-            36, 37, 38
+            36, 37, 38,
+            41, 42, 43, 44, 45, 46
     );
 
     public static void main(String[] args) {
@@ -22,7 +23,7 @@ public class FileManage {
         String regex = "N\\d{1,3}";
         for (int i = 1; i < 120; i++) {
             if (!okList.contains(i)) {
-                createFileAndContent(originFile, "N" + i, regex);
+                //createFileAndContent(originFile, "N" + i, regex);
                 //deleteFile(originFile, regex, "N" + i);
             }
         }
