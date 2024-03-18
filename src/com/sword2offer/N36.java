@@ -6,6 +6,8 @@ import java.util.Stack;
  * 后缀表达式又叫逆波兰表达式，把操作符号，放在操作数后面的表达式。
  * 1+2*3 的RPN是 123*+
  * (1+2)*3 的RPN是 12+3*
+ *
+ * 代码封装函数 是有好处的， 公共代码错了，我只用该一个地方。比如28,29顺序错了。互换一下这两行就行了。
  * @author JUN
  */
 public class N36 {
@@ -15,7 +17,7 @@ public class N36 {
         System.out.println("i = " + i);
     }
 
-    public int evalRPN(String[] tokens){
+    public int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
         for (String token : tokens) {
             switch (token) {
@@ -23,9 +25,9 @@ public class N36 {
                 case "-":
                 case "*":
                 case "/":
-                    Integer m = stack.pop();
                     Integer n = stack.pop();
-                    Integer res = cal(m,n,token);
+                    Integer m = stack.pop();
+                    Integer res = cal(m, n, token);
                     stack.push(res);
                     break;
                 default:
@@ -37,7 +39,7 @@ public class N36 {
     }
 
     private Integer cal(Integer m, Integer n, String token) {
-        switch (token){
+        switch (token) {
             case "+":
                 return m + n;
             case "-":
